@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Wrap around App for allowing Route to work */}
     <BrowserRouter>
       <App />
     </BrowserRouter>

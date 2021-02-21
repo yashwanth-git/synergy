@@ -1,28 +1,68 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-const LoginForm = () => {
-  //Refs
-  const emailRef = useRef();
-  const passRef = useRef();
+const LoginForm = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
+  //History
+  const history = useHistory();
   //States
-  const [emailError, setEmailError] = useState(false);
-  const [passError, setPassError] = useState(false);
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    if (emailRef.current.value === "") {
-      setEmailError(true);
+  const [emailError, setEmailError] = useState();
+  const [passError, setPassError] = useState();
+  const [emailEmpty, setEmailEmpty] = useState();
+  //UseEffect
+  useEffect(() => {
+    if (!emailError && !passError) {
+      setIsLoggedIn(true);
     } else {
-      setEmailError(false);
+      setIsLoggedIn(false);
     }
+    console.log(emailError && passError);
+    console.log(isLoggedIn);
+  }, [emailError, passError]);
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const emailblockCon = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!yahoo.co.in)(?!GMAIL.COM)(?!Gmail.com)(?!gmail.com)(?!YAHOO.COM)(?!YAHOO.IN)(?!rediffmail.com)(?!yahoo.in)(?!msn.com)(?!hotmail.com)(?!sify.com)(?!outlook.com)(?!OUTLOOK.COM)([\w-]+\.)+[\w-]{2,4})?$/;
+    //To check business email
+    let check_business_email = emailblockCon.test(
+      emailRef.current.value.toLowerCase()
+    );
+    //console.log("Business Email", !check_business_email);
+    //If Email is empty
+    if (emailRef.current.value === "") {
+      await setEmailError(true);
+    } else {
+      await setEmailError(false);
+    }
+    //If Password is empty
     if (passRef.current.value === "") {
-      setPassError(true);
+      await setPassError(true);
     }
-    console.log(emailRef);
+    //If Email is not business email
+    if (!check_business_email) {
+      await setEmailError(true);
+    }
+    //Check
+    if (
+      emailRef.current.value === "admin@ad.com" &&
+      passRef.current.value === "admin"
+    ) {
+      setIsLoggedIn(true);
+      history.push("/dashboard");
+    }
+  };
+  const emailValueHandler = async () => {
+    if (emailRef.current.value != "") {
+      await setEmailEmpty(true);
+      await setEmailError(false);
+    }
+  };
+  const passValueHandler = async () => {
+    if (passRef.current.value != "") {
+      await setPassError(false);
+    }
   };
   return (
     <FormWrap>
@@ -37,13 +77,17 @@ const LoginForm = () => {
             className={`${emailError ? "error" : ""}`}
             id="email"
             ref={emailRef}
+            onChange={emailValueHandler}
             required
           />
-          <label htmlFor="email" className="emailLabel">
+          <label
+            htmlFor="email"
+            className={`emailLabel ${emailEmpty ? "no-error" : ""}`}
+          >
             Email
           </label>
           <p className={`email-error ${emailError ? "show" : "hide"}`}>
-            Please enter your email
+            Please enter your business email
           </p>
         </div>
         <div className="field-wrapper">
@@ -51,6 +95,7 @@ const LoginForm = () => {
             type="password"
             id="password"
             className={`${passError ? "error" : ""}`}
+            onChange={passValueHandler}
             ref={passRef}
             required
           />
@@ -139,6 +184,10 @@ const StyledForm = styled.form`
       top: 1.25em;
       font-size: var(--lengthMd1);
       transition: all ease-in-out 200ms;
+      &.no-error {
+        top: -0.6em;
+        background: #fff;
+      }
     }
     .error {
       outline-color: red;

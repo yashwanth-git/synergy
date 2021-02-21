@@ -3,11 +3,16 @@ import styled from "styled-components";
 //Components
 import HomeNav from "../components/HomeNav";
 import LoginForm from "../components/LoginForm";
-const Login = () => {
+const Login = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
   return (
     <StyledBg>
       <HomeNav />
-      <LoginForm />
+      <LoginForm
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        emailRef={emailRef}
+        passRef={passRef}
+      />
     </StyledBg>
   );
 };
