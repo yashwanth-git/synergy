@@ -3,10 +3,17 @@ import styled from "styled-components";
 //Components
 import HomeNav from "../components/HomeNav";
 import LoginForm from "../components/LoginForm";
-const Login = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
+const Login = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  emailRef,
+  passRef,
+  darkMode,
+  setDarkMode,
+}) => {
   return (
     <StyledBg>
-      <HomeNav />
+      <HomeNav darkMode={darkMode} setDarkMode={setDarkMode} />
       <LoginForm
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}

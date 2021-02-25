@@ -80,12 +80,7 @@ const LoginForm = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
             onChange={emailValueHandler}
             required
           />
-          <label
-            htmlFor="email"
-            className={`emailLabel ${emailEmpty ? "no-error" : ""}`}
-          >
-            Email
-          </label>
+          <label htmlFor="email">Email</label>
           <p className={`email-error ${emailError ? "show" : "hide"}`}>
             Please enter your business email
           </p>
@@ -213,7 +208,7 @@ const StyledForm = styled.form`
   .submitBtn {
     display: block;
     width: 100%;
-    margin-top: 3em;
+    margin: 3em;
     height: 3.5rem;
     background-color: var(--colorPrimary);
     border: none;

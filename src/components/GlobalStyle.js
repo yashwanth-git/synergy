@@ -19,6 +19,14 @@ html{
     --lengthLg3:4rem;
     --font:'Poppins', sans-serif;
 }
+.App{
+    transition:all 450ms ease-in-out;
+}
+.darkMode{
+    --colorAccent:#C651CD;
+    --colorGrey:#363636;
+    transition:all 450ms ease-in-out;
+}
 *{
     box-sizing:border-box;
     padding:0;
@@ -33,6 +41,12 @@ img{
 .container{
     max-width:1200px;
     margin:0 auto;
+}
+.hide{
+    display:none;
+}
+.show{
+    display:block;
 }
 `;
 

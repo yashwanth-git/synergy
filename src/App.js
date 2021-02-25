@@ -10,11 +10,12 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   //State
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   //Refs
   const emailRef = useRef();
   const passRef = useRef();
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? "darkMode" : ""}`}>
       <GlobalStyle />
       <Switch>
         {/*Switch assists the path for full detection of route*/}
@@ -24,6 +25,8 @@ function App() {
             setIsLoggedIn={setIsLoggedIn}
             emailRef={emailRef}
             passRef={passRef}
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
           />
         </Route>
         {isLoggedIn ? (
@@ -37,9 +40,5 @@ function App() {
     </div>
   );
 }
-
-const Head = styled.h1`
-  color: var(--colorPrimary);
-`;
 
 export default App;

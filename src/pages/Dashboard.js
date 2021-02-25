@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+//Components
+import CommonNav from "../components/CommonNav";
 
 const Dashboard = ({ emailRef }) => {
   const LogName = emailRef.current.value;
   return (
     <StyledDashboard>
+      <CommonNav />
       <h2>Dashboard</h2>
       <p>Logged In as: {LogName}</p>
     </StyledDashboard>
