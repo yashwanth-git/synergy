@@ -167,11 +167,11 @@ const StyledForm = styled.form`
       }
       &:focus + label {
         top: -0.6em;
-        background: var(--colorText);
+        background: #fff;
       }
       &:valid + label {
         top: -0.6em;
-        background: var(--colorText);
+        background: #fff;
       }
     }
     label {
