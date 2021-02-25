@@ -8,6 +8,7 @@ html{
     --colorText:#565360;
     --colorLabel:#908E9B;
     --colorDisabled:#E1DFE9;
+    --colorBg:#ffffff;
     --lengthSm1:0.25rem;
     --lengthSm2:0.375rem;
     --lengthSm3:0.5rem;
@@ -25,6 +26,10 @@ html{
 .darkMode{
     --colorAccent:#C651CD;
     --colorGrey:#363636;
+    --colorBg:#363636;
+    --colorText:rgba(255, 255, 255, 0.96);
+    --colorLabel:rgba(255, 255, 255, 0.67);
+    --colorDisabled:rgba(255, 255, 255, 0.45);
     transition:all 450ms ease-in-out;
 }
 *{

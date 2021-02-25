@@ -125,7 +125,7 @@ const FormWrap = styled.div`
   max-width: 500px;
   margin: 0 auto;
   padding: 2em;
-  background: #fff;
+  background: var(--colorBg);
   .registerHere {
     text-align: center;
     a {
@@ -139,10 +139,12 @@ const FormHead = styled.div`
   h1 {
     text-transform: uppercase;
     font-size: var(--lengthLg1);
+    color: var(--colorText);
   }
   p {
     font-size: var(--lengthMd2);
     margin-top: 1.2em;
+    color: var(--colorText);
   }
 `;
 const StyledForm = styled.form`
@@ -165,11 +167,11 @@ const StyledForm = styled.form`
       }
       &:focus + label {
         top: -0.6em;
-        background: #fff;
+        background: var(--colorText);
       }
       &:valid + label {
         top: -0.6em;
-        background: #fff;
+        background: var(--colorText);
       }
     }
     label {
@@ -229,6 +231,7 @@ const FormFooter = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: var(--colorText);
     label {
       margin-left: 0.5em;
       font-size: var(--lengthMd1);
@@ -236,6 +239,7 @@ const FormFooter = styled.div`
   }
   a {
     text-decoration: none;
+    color: var(--colorAccent);
   }
 `;
 
