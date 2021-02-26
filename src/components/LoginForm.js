@@ -1,9 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory, Link } from "react-router-dom";
-//Font Awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
   //History

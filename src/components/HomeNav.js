@@ -7,6 +7,7 @@ import whitelogo from "../img/logo-white.png";
 const HomeNav = ({ darkMode, setDarkMode }) => {
   const darkModeHandler = (e) => {
     setDarkMode(!darkMode);
+    localStorage.setItem("darkModeCheck", !darkMode);
   };
   return (
     <StyledNav>

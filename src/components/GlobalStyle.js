@@ -39,6 +39,9 @@ html{
     line-height:1;
     font-family:var(--font);
 }
+html,body,.App,#root{
+    height:100%;
+}
 img{
     width:100%;
     height:auto;

@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-//Components
-import CommonNav from "../components/CommonNav";
+//import Components
 import Sidebar from "../components/Sidebar";
-
-const Dashboard = ({ emailRef }) => {
-  //const LogName = emailRef.current.value;
-  const pageTitle = "Dashboard";
+import CommonNav from "../components/CommonNav";
+const Performance = () => {
+  const pageTitle = "Performance";
   return (
     <PageStyle>
       <Sidebar />
@@ -34,4 +32,4 @@ const PageContent = styled.div`
   padding: 1.5em 1em;
   background: var(--colorGrey);
 `;
-export default Dashboard;
+export default Performance;
