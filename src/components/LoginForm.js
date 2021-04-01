@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory, Link } from "react-router-dom";
-
-const LoginForm = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { signIn } from "../actions/isLogged";
+const LoginForm = ({ emailRef, passRef }) => {
   //History
   const history = useHistory();
   //States
   const [emailError, setEmailError] = useState();
   const [passError, setPassError] = useState();
   const [emailEmpty, setEmailEmpty] = useState();
+  const dispatch = useDispatch();
   //UseEffect
   useEffect(() => {
     if (!emailError && !passError) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
+      dispatch(signIn());
     }
     console.log(emailError && passError);
-    console.log(isLoggedIn);
   }, [emailError, passError]);
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -46,7 +45,7 @@ const LoginForm = ({ isLoggedIn, setIsLoggedIn, emailRef, passRef }) => {
       emailRef.current.value === "admin@ad.com" &&
       passRef.current.value === "admin"
     ) {
-      setIsLoggedIn(true);
+      dispatch(signIn());
       history.push("/dashboard");
     }
   };

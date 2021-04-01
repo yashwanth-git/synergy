@@ -1,25 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+
 //Components
 import HomeNav from "../components/HomeNav";
 import LoginForm from "../components/LoginForm";
-const Login = ({
-  isLoggedIn,
-  setIsLoggedIn,
-  emailRef,
-  passRef,
-  darkMode,
-  setDarkMode,
-}) => {
+const Login = ({ emailRef, passRef }) => {
   return (
     <StyledBg>
-      <HomeNav darkMode={darkMode} setDarkMode={setDarkMode} />
-      <LoginForm
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        emailRef={emailRef}
-        passRef={passRef}
-      />
+      <HomeNav />
+      <LoginForm emailRef={emailRef} passRef={passRef} />
     </StyledBg>
   );
 };
