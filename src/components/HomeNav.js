@@ -1,22 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { darkMode } from "../actions/isDark";
 //Import Images
 import logo from "../img/logo.png";
 import whitelogo from "../img/logo-white.png";
-const HomeNav = ({ darkMode, setDarkMode }) => {
-  const darkModeHandler = (e) => {
-    setDarkMode(!darkMode);
+const HomeNav = () => {
+  const isDark = useSelector((state) => state.isDark);
+  const dispatch = useDispatch();
+  const darkModeHandler = () => {
+    dispatch(darkMode());
     localStorage.setItem("darkModeCheck", !darkMode);
   };
+
   return (
     <StyledNav>
       <NavLink to="/">
-        {darkMode && <img src={whitelogo} alt="Synergita Logo" />}
+        {isDark && <img src={whitelogo} alt="Synergita Logo" />}
         <img
           src={logo}
           alt="Synergita Logo"
-          className={`${darkMode ? "hide" : ""}`}
+          className={`${isDark ? "hide" : ""}`}
         />
       </NavLink>
       <div className="Navleft">

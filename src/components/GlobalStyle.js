@@ -5,8 +5,8 @@ html{
     --colorPrimary:#8739F9;
     --colorAccent:#37B9F1;
     --colorGrey:#F2F5F5;
-    --colorText:#565360;
-    --colorLabel:#908E9B;
+    --colorText:#343239;
+    --colorLabel:#a4a3a6;
     --colorDisabled:#E1DFE9;
     --colorBg:#ffffff;
     --lengthSm1:0.25rem;

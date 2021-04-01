@@ -14,8 +14,8 @@ const Sidebar = () => {
       <NavLink to="/people" aria-label="People">
         <img src={people} alt="People" />
       </NavLink>
-      <NavLink to="/performance" aria-label="Performance">
-        <img src={performance} alt="Performance" />
+      <NavLink to="/tracking" aria-label="Tracking">
+        <img src={performance} alt="Tracking" />
       </NavLink>
     </StyledSidebar>
   );

@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
-import styled from "styled-components";
-
+import { useSelector } from "react-redux";
 //Components
 import GlobalStyle from "./components/GlobalStyle";
 import Login from "./pages/Login";
@@ -9,33 +8,27 @@ import { Route, Switch, Redirect } from "react-router-dom";
 //Import Pages
 import Dashboard from "./pages/Dashboard";
 import People from "./pages/People";
-import Performance from "./pages/Performance";
+import Tracking from "./pages/Tracking";
 //Import Data
 import data from "./data";
 function App() {
   //State
   const [empData, setEmpData] = useState(data());
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  //
+  const isLogged = useSelector((state) => state.isLogged);
+  const isDark = useSelector((state) => state.isDark);
   //Refs
   const emailRef = useRef();
   const passRef = useRef();
   return (
-    <div className={`App ${darkMode ? "darkMode" : ""}`}>
+    <div className={`App ${isDark ? "darkMode" : ""}`}>
       <GlobalStyle />
       <Switch>
         {/*Switch assists the path for full detection of route*/}
         <Route path="/" exact>
-          <Login
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-            emailRef={emailRef}
-            passRef={passRef}
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-          />
+          <Login emailRef={emailRef} passRef={passRef} />
         </Route>
-        {/* {isLoggedIn ? (
+        {/* {isLogged ? (
           <Route exact path="/dashboard">
             <Dashboard emailRef={emailRef} />
           </Route>
@@ -48,8 +41,8 @@ function App() {
         <Route exact path="/people">
           <People empData={empData} />
         </Route>
-        <Route exact path="/performance">
-          <Performance />
+        <Route exact path="/tracking">
+          <Tracking />
         </Route>
       </Switch>
     </div>
