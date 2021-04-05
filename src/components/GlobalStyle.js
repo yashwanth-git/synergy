@@ -56,6 +56,9 @@ img{
 .show{
     display:block;
 }
+.text-center{
+    text-align:center;
+}
 `;
 
 export default GlobalStyle;

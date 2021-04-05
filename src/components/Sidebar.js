@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../img/logo.svg";
 import people from "../img/people.svg";
 import performance from "../img/performance.svg";
+import order from "../img/writing-sidebar.svg";
 const Sidebar = () => {
   return (
     <StyledSidebar>
@@ -13,6 +14,9 @@ const Sidebar = () => {
       </NavLink>
       <NavLink to="/people" aria-label="People">
         <img src={people} alt="People" />
+      </NavLink>
+      <NavLink to="/order" aria-label="Order">
+        <img src={order} alt="Order" />
       </NavLink>
       <NavLink to="/tracking" aria-label="Tracking">
         <img src={performance} alt="Tracking" />
@@ -61,6 +65,7 @@ const StyledSidebar = styled.nav`
       opacity: 0;
       visibility: hidden;
       transition: opacity 250ms ease-in-out;
+      z-index: 2;
     }
     &:hover::after {
       opacity: 1;

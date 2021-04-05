@@ -4,10 +4,9 @@ import styled from "styled-components";
 import arrow from "../img/arrow.svg";
 const DropDown = ({ Choice }) => {
   const options = Choice.options;
-  console.log(options);
   return (
     <StyledDropDown name={`${Choice.name}`} id={`${Choice.name}`}>
-      <option disabled selected value>
+      <option disabled defaultValue value>
         {Choice.name}
       </option>
       {options.map((opt, index) => (
@@ -20,7 +19,7 @@ const DropDown = ({ Choice }) => {
 };
 
 const StyledDropDown = styled.select`
-  border: 1px solid var(--colorLabel);
+  outline-color: var(--colorLabel);
   padding: 0.5em 3em 0.5em 0.5em;
   line-height: 1.5em;
   font-size: var(--lengthMd1);

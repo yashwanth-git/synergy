@@ -26,7 +26,7 @@ const Dashboard = ({ emailRef }) => {
                 </div>
                 <div className="Card__Img">
                   <span>
-                    <img src={revenue} alt="Revenue" class="img-fluid" />
+                    <img src={revenue} alt="Revenue" className="img-fluid" />
                   </span>
                 </div>
               </div>
@@ -39,7 +39,7 @@ const Dashboard = ({ emailRef }) => {
                 </div>
                 <div className="Card__Img">
                   <span>
-                    <img src={order} alt="Orders" class="img-fluid" />
+                    <img src={order} alt="Orders" className="img-fluid" />
                   </span>
                 </div>
               </div>
@@ -52,7 +52,11 @@ const Dashboard = ({ emailRef }) => {
                 </div>
                 <div className="Card__Img">
                   <span>
-                    <img src={delivered} alt="Delivered" class="img-fluid" />
+                    <img
+                      src={delivered}
+                      alt="Delivered"
+                      className="img-fluid"
+                    />
                   </span>
                 </div>
               </div>
@@ -65,7 +69,7 @@ const Dashboard = ({ emailRef }) => {
                 </div>
                 <div className="Card__Img">
                   <span>
-                    <img src={pending} alt="Pending" class="img-fluid" />
+                    <img src={pending} alt="Pending" className="img-fluid" />
                   </span>
                 </div>
               </div>

@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 //import Components
 import Sidebar from "../components/Sidebar";
 import CommonNav from "../components/CommonNav";
 import DropDown from "../components/DropDown";
-import ListTable from "../components/ListTable";
+import UserForm from "../components/UserForm";
+import LineItemForm from "../components/LineItemForm";
 //Images
 import send from "../img/send.svg";
 import receive from "../img/get-money.svg";
 import user from "../img/user-dark.svg";
 import calendar from "../img/calendar.svg";
 const Tracking = () => {
-  const pageTitle = "Tracking";
+  const [senderForm, setSenderForm] = useState(false);
+  const [receiverForm, setReceiverForm] = useState(false);
+  const pageTitle = "Add Order";
+  //For Sender Location Dropdown
   const SenderLocation = {
-    name: "Sender Location",
+    name: "From",
     options: [
       {
         id: uuidv4(),
-        name: "Sender Location",
+        name: "From",
       },
       {
         id: uuidv4(),
@@ -34,12 +38,13 @@ const Tracking = () => {
       },
     ],
   };
+  //For Receiver Location Dropdown
   const ReceiverLocation = {
-    name: "Receiver Location",
+    name: "Delivery",
     options: [
       {
         id: uuidv4(),
-        name: "Receiver Location",
+        name: "Delivery",
       },
       {
         id: uuidv4(),
@@ -54,6 +59,14 @@ const Tracking = () => {
         name: "Mumbai",
       },
     ],
+  };
+  //Sender Submit Form
+  const onSenderSubmitHandler = (data) => {
+    console.log(data);
+  };
+  //Receiver Submit Form
+  const onReceiverSubmitHandler = (data) => {
+    console.log(data);
   };
   return (
     <PageStyle>
@@ -61,7 +74,7 @@ const Tracking = () => {
       <Content>
         <CommonNav pageTitle={pageTitle} />
         <PageContent>
-          <Instruction>Please fill out the following details</Instruction>
+          <Instruction>Please provide the order details</Instruction>
           <TrackingInputs>
             <UserInput>
               <span>
@@ -71,15 +84,31 @@ const Tracking = () => {
                 <input type="text" id="sender" required></input>
                 <label htmlFor="sender">Sender</label>
               </div>
+              <button
+                className="Add"
+                onClick={() => {
+                  setSenderForm(true);
+                }}
+              >
+                +
+              </button>
             </UserInput>
             <UserInput>
               <span>
-                <img src={user} alt="" />
+                <img src={user} alt="User" />
               </span>
               <div className="field-wrapper">
                 <input type="text" id="receiver" required></input>
                 <label htmlFor="receiver">Receiver</label>
               </div>
+              <button
+                className="Add"
+                onClick={() => {
+                  setReceiverForm(true);
+                }}
+              >
+                +
+              </button>
             </UserInput>
             <UserDate>
               <span>
@@ -87,22 +116,36 @@ const Tracking = () => {
               </span>
               <input type="date"></input>
             </UserDate>
-            <StyledDropdown>
+            <Dropdown>
               <label htmlFor={SenderLocation.name}>
                 <img src={send} alt="Sender" />
               </label>
               <DropDown Choice={SenderLocation} />
-            </StyledDropdown>
-            <StyledDropdown>
+            </Dropdown>
+            <Dropdown>
               <label htmlFor={ReceiverLocation.name}>
                 <img src={receive} alt="Receiver" />
               </label>
               <DropDown Choice={ReceiverLocation} />
-            </StyledDropdown>
+            </Dropdown>
           </TrackingInputs>
-          <ListTable />
+          <LineItemForm />
         </PageContent>
       </Content>
+      {senderForm && (
+        <UserForm
+          isClicked={senderForm}
+          setIsClicked={setSenderForm}
+          onSubmitHandler={onSenderSubmitHandler}
+        />
+      )}
+      {receiverForm && (
+        <UserForm
+          isClicked={receiverForm}
+          setIsClicked={setReceiverForm}
+          onSubmitHandler={onReceiverSubmitHandler}
+        />
+      )}
     </PageStyle>
   );
 };
@@ -136,6 +179,20 @@ const UserInput = styled.div`
   width: 30%;
   min-width: 270px;
   margin-top: 2em;
+  .Add {
+    font-size: 1.5rem;
+    padding: 0.4em;
+    font-weight: 600;
+    color: #fff;
+    background: var(--colorPrimary);
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    &:hover {
+      background: #7c27fc;
+    }
+  }
   img {
     width: 40px;
     height: 40px;
@@ -199,7 +256,7 @@ const UserDate = styled.div`
     }
   }
 `;
-const StyledDropdown = styled.div`
+const Dropdown = styled.div`
   display: flex;
   align-items: center;
   width: 30%;

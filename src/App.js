@@ -8,6 +8,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 //Import Pages
 import Dashboard from "./pages/Dashboard";
 import People from "./pages/People";
+import Order from "./pages/Order";
 import Tracking from "./pages/Tracking";
 //Import Data
 import data from "./data";
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route exact path="/people">
           <People empData={empData} />
+        </Route>
+        <Route exact path="/order">
+          <Order />
         </Route>
         <Route exact path="/tracking">
           <Tracking />
